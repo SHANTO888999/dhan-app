@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Smooth transitions for theme toggle */
+body {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Keyframes for subtle input validation shake */
+@keyframes softShake {
+  0%, 100% { transform: translateX(0); }
+  15%, 45%, 75% { transform: translateX(-6px); }
+  30%, 60%, 90% { transform: translateX(6px); }
+}
+
+.animate-shake {
+  animation: softShake 0.42s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* Subtle gentle red ambient glow vignette from all 4 sides */
+@keyframes redAmbientVignette {
+  0% { opacity: 0; }
+  25% { opacity: 1; }
+  75% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+.animate-red-ambient {
+  animation: redAmbientVignette 0.8s ease-in-out forwards;
+}
+
+/* Sleek custom scrollbars that never jump or clip content */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.55);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.45);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.65);
+}

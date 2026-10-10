@@ -1,0 +1,8 @@
+{
+  "name": "ধানের আড়ত ম্যানেজমেন্ট v2.0 (Arat Management System)",
+  "description": "ধানের আড়ত ইনভেন্টরি, সেন্ট্রাল লেজার ইঞ্জিন, ক্যাশ-ইন-হ্যান্ড ও বিক্রেতা-ক্রেতা খতিয়ান ব্যবস্থাপনা সিস্টেম v2.0",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

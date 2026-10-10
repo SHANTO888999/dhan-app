@@ -1,0 +1,197 @@
+{
+  "entities": {
+    "PaddyVariety": {
+      "title": "PaddyVariety",
+      "description": "Paddy/Rice variety tracked in inventory and rates",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 100 },
+        "code": { "type": "string", "maxLength": 50 },
+        "defaultPurchaseRate": { "type": "number" },
+        "defaultSaleRate": { "type": "number" },
+        "currentStockMon": { "type": "number" },
+        "description": { "type": "string", "maxLength": 500 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "userId"]
+    },
+    "Farmer": {
+      "title": "Farmer",
+      "description": "Farmer or paddy seller profile and ledger balance",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 120 },
+        "phone": { "type": "string", "maxLength": 30 },
+        "address": { "type": "string", "maxLength": 200 },
+        "openingBalance": { "type": "number" },
+        "currentBalance": { "type": "number" },
+        "totalPurchasedAmount": { "type": "number" },
+        "totalPaidAmount": { "type": "number" },
+        "totalPurchasedMon": { "type": "number" },
+        "notes": { "type": "string", "maxLength": 500 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "userId"]
+    },
+    "Purchase": {
+      "title": "Purchase",
+      "description": "Purchase transaction of paddy from a farmer with weight in Mon & Kg",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "invoiceNumber": { "type": "string", "maxLength": 50 },
+        "farmerId": { "type": "string", "maxLength": 128 },
+        "farmerName": { "type": "string", "maxLength": 120 },
+        "farmerPhone": { "type": "string", "maxLength": 30 },
+        "varietyId": { "type": "string", "maxLength": 128 },
+        "varietyName": { "type": "string", "maxLength": 100 },
+        "weightMon": { "type": "number" },
+        "weightKg": { "type": "number" },
+        "totalMon": { "type": "number" },
+        "ratePerMon": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "paidAmount": { "type": "number" },
+        "dueAmount": { "type": "number" },
+        "paymentMethod": { "type": "string", "maxLength": 50 },
+        "date": { "type": "string" },
+        "notes": { "type": "string", "maxLength": 500 },
+        "smsSent": { "type": "boolean" },
+        "userId": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["farmerId", "varietyId", "totalMon", "ratePerMon", "totalAmount", "userId"]
+    },
+    "Party": {
+      "title": "Party",
+      "description": "Buyer, rice mill or wholesaler profile and ledger balance",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 120 },
+        "phone": { "type": "string", "maxLength": 30 },
+        "address": { "type": "string", "maxLength": 200 },
+        "openingBalance": { "type": "number" },
+        "currentBalance": { "type": "number" },
+        "totalSalesAmount": { "type": "number" },
+        "totalReceivedAmount": { "type": "number" },
+        "totalSoldMon": { "type": "number" },
+        "notes": { "type": "string", "maxLength": 500 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "userId"]
+    },
+    "Sale": {
+      "title": "Sale",
+      "description": "Sale and dispatch shipment entry with transport and truck details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "challanNumber": { "type": "string", "maxLength": 50 },
+        "partyId": { "type": "string", "maxLength": 128 },
+        "partyName": { "type": "string", "maxLength": 120 },
+        "partyPhone": { "type": "string", "maxLength": 30 },
+        "varietyId": { "type": "string", "maxLength": 128 },
+        "varietyName": { "type": "string", "maxLength": 100 },
+        "bagCount": { "type": "number" },
+        "totalMon": { "type": "number" },
+        "ratePerMon": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "receivedAmount": { "type": "number" },
+        "dueAmount": { "type": "number" },
+        "transportTruckNo": { "type": "string", "maxLength": 50 },
+        "transportDriverName": { "type": "string", "maxLength": 100 },
+        "transportDriverPhone": { "type": "string", "maxLength": 30 },
+        "transportTruckFare": { "type": "number" },
+        "farePaidBy": { "type": "string", "maxLength": 30 },
+        "date": { "type": "string" },
+        "notes": { "type": "string", "maxLength": 500 },
+        "smsSent": { "type": "boolean" },
+        "userId": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["partyId", "varietyId", "totalMon", "ratePerMon", "totalAmount", "userId"]
+    },
+    "Payment": {
+      "title": "Payment",
+      "description": "Cash ledger entry for payments to farmers or collections from parties",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string", "maxLength": 50 },
+        "entityId": { "type": "string", "maxLength": 128 },
+        "entityName": { "type": "string", "maxLength": 120 },
+        "amount": { "type": "number" },
+        "paymentMethod": { "type": "string", "maxLength": 50 },
+        "date": { "type": "string" },
+        "note": { "type": "string", "maxLength": 500 },
+        "receiptNumber": { "type": "string", "maxLength": 50 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["type", "amount", "userId"]
+    },
+    "Settings": {
+      "title": "Settings",
+      "description": "User business profile, invoice print headers, and SMS gateway configuration",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "businessName": { "type": "string", "maxLength": 150 },
+        "proprietor": { "type": "string", "maxLength": 100 },
+        "phone": { "type": "string", "maxLength": 30 },
+        "address": { "type": "string", "maxLength": 250 },
+        "smsGatewayApiKey": { "type": "string", "maxLength": 200 },
+        "smsGatewaySenderId": { "type": "string", "maxLength": 100 },
+        "smsAutoSendFarmer": { "type": "boolean" },
+        "smsAutoSendBuyer": { "type": "boolean" },
+        "thermalPrinterWidth": { "type": "number" },
+        "invoiceFooterNote": { "type": "string", "maxLength": 300 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["businessName", "userId"]
+    }
+  },
+  "firestore": {
+    "/paddy_varieties/{varietyId}": {
+      "schema": "PaddyVariety",
+      "description": "Rice and paddy varieties with rates and stock"
+    },
+    "/farmers/{farmerId}": {
+      "schema": "Farmer",
+      "description": "Farmer profiles and balance ledger"
+    },
+    "/purchases/{purchaseId}": {
+      "schema": "Purchase",
+      "description": "Purchase transactions from farmers"
+    },
+    "/parties/{partyId}": {
+      "schema": "Party",
+      "description": "Buyer and party profiles and receivables"
+    },
+    "/sales/{saleId}": {
+      "schema": "Sale",
+      "description": "Sales and truck shipment transactions"
+    },
+    "/payments/{paymentId}": {
+      "schema": "Payment",
+      "description": "Direct payments and cash settlements"
+    },
+    "/settings/{settingId}": {
+      "schema": "Settings",
+      "description": "Business information and gateway configs"
+    }
+  }
+}
